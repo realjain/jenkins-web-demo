@@ -31,7 +31,7 @@ pipeline {
                     rsync -av --delete \
                     --exclude='.git/' \
                     --exclude='Jenkinsfile' \
-                    ./ /var/www/html/
+                    ./ /usr/share/nginx/html/
                 '''
             }
         }
