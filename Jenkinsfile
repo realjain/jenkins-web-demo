@@ -23,18 +23,24 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying website to Nginx'
+        
+stage('Deploy') {
+    steps {
+        echo 'Deploying website to Nginx'
 
-                sh '''
-                    rsync -av --delete \
-                    --exclude='.git/' \
-                    --exclude='Jenkinsfile' \
-                    ./ /usr/share/nginx/html/
-                '''
-            }
-        }
+        sh '''
+            rsync -rtv \
+            --no-perms \
+            --no-owner \
+            --no-group \
+            --delete \
+            --exclude='.git/' \
+            --exclude='Jenkinsfile' \
+            ./ /usr/share/nginx/html/
+        '''
+    }
+}
+
     }
 
     post {
