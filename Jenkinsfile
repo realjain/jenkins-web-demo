@@ -29,7 +29,7 @@ stage('Deploy') {
         echo 'Deploying website to Nginx'
 
         sh '''
-            rsync -rtv \
+            rsync -rv \
             --no-perms \
             --no-owner \
             --no-group \
